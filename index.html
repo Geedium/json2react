@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON2React - Builder</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    .transition-1 {
+      transition: opacity 500ms linear;
+    }
+    .form-group {
+      display: block;
+      border-radius: 4px;
+      border: 1px solid #f7f7f7;
+      margin-top: 16px;
+      margin-bottom: 16px;
+      max-width: 250px;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-group">
+    <input id="txt" type="text" placeholder="Text" />
+    <button id="apply">Apply</button>
+  </div>
+  <div class="form-group">
+    <input type="color" id="bg" value="#f6b73c">
+    <button id="apply2">Apply</button>
+  </div>
+  <div style="opacity:0;" class="transition-1" id="debug">Applied!</div>
+  <script>
+    window.onload = function() {
+      console.log("Window Loaded!");
+
+      const btn = document.getElementById("apply");
+      const btn2 = document.getElementById("apply2");
+
+      const text = document.getElementById("txt");
+      const color = document.getElementById("bg");
+
+      const debug = document.getElementById("debug");
+      
+      btn.addEventListener("click", () => {
+        axios.post("/", {
+          key: "title",
+          message: text.value,
+        }).then(() => {
+          debug.style.opacity = 1;
+          setTimeout(() => {
+            debug.style.opacity = 0;
+          }, 1000);
+        })
+        .catch((err) => {
+          alert(err.message);
+        })
+      });
+
+      btn2.addEventListener("click", () => {
+        axios.post("/", {
+          key: "bg",
+          message: color.value,
+        }).then(() => {
+          debug.style.opacity = 1;
+          setTimeout(() => {
+            debug.style.opacity = 0;
+          }, 1000);
+        })
+        .catch((err) => {
+          alert(err.message);
+        })
+      });
+    };
+  </script>
+</body>
+</html>

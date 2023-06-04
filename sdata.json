@@ -1,0 +1,35 @@
+{
+  "App": {
+    "Page": {
+      "props": {
+        "hello": true,
+        "elevation": 1,
+        "title": "Partial working?!"
+      },
+      "style": {
+        "backgroundColor": "#ffffff",
+        "color": "#000"
+      },
+      "Header": {},
+      "Footer": {}
+    }
+  },
+  "Sidebar": {
+    "Link": {
+      "props": {
+        "to": "/about"
+      },
+      "style": {
+        "color": "blue"
+      }
+    },
+    "Link2": {
+      "props": {
+        "to": "/contact"
+      },
+      "style": {
+        "color": "green"
+      }
+    }
+  }
+}
